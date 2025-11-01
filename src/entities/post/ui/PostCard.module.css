@@ -1,0 +1,12 @@
+.wrapper{
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+[data-theme="dark"] .title, [data-theme="dark"] .body{
+    color: #fff
+}
+
+.body{
+    margin-top: 10px;
+}

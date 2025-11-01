@@ -1,0 +1,16 @@
+.title{
+    margin-bottom: 40px;
+}
+
+[data-theme="dark"] .title{
+    color: #fff;
+}
+
+.wrapper{
+    padding: 50px;
+    background-color: rgb(214, 216, 227);
+}
+
+[data-theme="dark"] .wrapper{
+    background-color: rgb(61, 63, 71);
+}
