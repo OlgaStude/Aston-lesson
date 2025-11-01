@@ -1,9 +1,12 @@
+import { FilterProvider } from "../../features/PostLengthFilter/lib/filterByLength";
 import PostList from "../../widgets/PostList/PostList";
 
 function MainLayout(){
     return (
         <>
-            <PostList></PostList>
+            <FilterProvider>
+                <PostList></PostList>
+            </FilterProvider>
         </>
     )
 }

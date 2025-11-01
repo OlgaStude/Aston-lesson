@@ -1,11 +1,9 @@
-// import { useState } from 'react'
 import './App.css'
 import Header from '../widgets/LayoutHeader/Header'
 import Footer from '../widgets/LayoutFooter/Footer'
 import MainLayout from '../shared/layouts/MainLayout'
 import { ThemeProvider } from '../shared/lib/theme/ThemeProvider'
 import Modal from '../shared/ui/Modal/Portal'
-import Button from '../shared/ui/Button/Button'
 import { useModal } from '../shared/lib/modal/useModal'
 
 function App() {
@@ -23,8 +21,7 @@ function App() {
             </Modal.Container>
           </Modal> : null
         }
-        <Header>
-        </Header>
+        <Header></Header>
         <MainLayout></MainLayout>
         <Footer></Footer>
       </ThemeProvider>

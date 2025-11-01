@@ -3,7 +3,7 @@ import { useModal } from '../../shared/lib/modal/useModal';
 import Button from '../../shared/ui/Button/Button';
 import styles from './Header.module.css'
 
-function Header({ children }){
+function Header(){
 
     const {handleClick} = useModal()
 
@@ -12,10 +12,14 @@ function Header({ children }){
             <header className={styles.header}>
                 <Button handleClick={handleClick} title='About' buttonClass="about"></Button>
                 <ThemeSwitcher></ThemeSwitcher>
-                <p>My Homework project!</p>
+                <Title></Title>
             </header>
         </>
     )
+}
+
+function Title(){
+    return <p>My Homework project!</p>
 }
 
 export default Header;
