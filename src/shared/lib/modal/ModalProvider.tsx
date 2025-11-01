@@ -11,7 +11,7 @@ export function ModalProvider({ children }){
 
     useEffect(
         () => {
-            document.body.style.overflow = isModal ? 'auto' : 'hidden'
+            document.body.style.overflow = isModal ? 'hidden' : 'auto'
         }, [isModal]
     )
 
