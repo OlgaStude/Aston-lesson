@@ -1,7 +1,9 @@
 .header{
-  text-align: center;
+  text-align: left;
   padding: 50px;
   font-size: 40px;
   background-color: #1f1d27;
   color: #fff;
+  
+  position: relative;
 }

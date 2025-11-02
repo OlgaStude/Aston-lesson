@@ -3,8 +3,8 @@
     width: 80%;
 }
 
-.title{
-
+[data-theme="dark"] .title, [data-theme="dark"] .body{
+    color: #fff
 }
 
 .body{

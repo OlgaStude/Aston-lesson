@@ -1,0 +1,34 @@
+.close-modal{
+    border: none;
+    background: none;
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    text-decoration: underline;
+
+    color: rgb(179, 177, 175);
+    transition-duration: 0.3s;
+
+    cursor: pointer;
+}
+.close-modal:hover{
+    color: rgb(148, 146, 143);
+}
+
+.about{
+    border: none;
+    background: none;
+
+    position: absolute;
+    top: 20px;
+    right: 10%;
+
+    color: #fff;
+    transition-duration: 0.3s;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
