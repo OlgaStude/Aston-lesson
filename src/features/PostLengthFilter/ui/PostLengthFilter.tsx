@@ -1,4 +1,5 @@
 import Button from "../../../shared/ui/Button/Button";
+import Input from "../../../shared/ui/Input/Input";
 import { useFilter } from "../lib/filterByLength";
 
 export default function PostLengthFilter(){
@@ -7,15 +8,9 @@ export default function PostLengthFilter(){
 
     return (
         <>
-            <Input></Input>
+            <Input name={'filter'} type={'number'} style={'input-filter'}></Input>
             <Button title='fiter' buttonClass='filter-button' handleClick={filterPosts}></Button>
             <Button title='clear filter' buttonClass='filter-button' handleClick={clearFilter}></Button>
         </>
     )
-}
-
-function Input(){
-    const { maxLenghtInput} = useFilter();
-
-    return <input type="number" ref={maxLenghtInput} name="filter" id="filter" />
 }

@@ -3,6 +3,23 @@ import Button from "../../../shared/ui/Button/Button"
 import Comment from "../../../entities/comments/ui/Comment"
 
 export default function CommentList({id}){
+    
+    const { comments, buttonTitle, getComments } = useComments(id)
+
+    return (
+        <>
+            <div className="container">
+                <Button handleClick={getComments} title={buttonTitle} buttonClass={'comment-button'}></Button>
+
+                {comments.map(comment => {
+                    return <Comment key={comment.id} name={comment.name} body={comment.body}></Comment>
+                })}
+            </div>
+        </>
+    )
+}
+
+function useComments(id){
     const [comments, setCommnents] = useState([])
 
     const [isOpen, toggle] = useState(false)
@@ -30,16 +47,5 @@ export default function CommentList({id}){
         }, [id, isOpen]
     )
 
-
-    return (
-        <>
-            <div className="container">
-                <Button handleClick={getComments} title={buttonTitle} buttonClass={'comment-button'}></Button>
-
-                {comments.map(comment => {
-                    return <Comment key={comment.id} name={comment.name} body={comment.body}></Comment>
-                })}
-            </div>
-        </>
-    )
+    return { comments, buttonTitle, getComments }
 }

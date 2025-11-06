@@ -2,6 +2,7 @@ import styles from './Header.module.css'
 import ThemeSwitcher from '../../features/ThemeSwitcher/ui/ThemeSwitcher';
 import Button from '../../shared/ui/Button/Button';
 import { useModal } from '../../shared/lib/modal/useModal';
+import Title from '../../shared/ui/Title/Title';
 
 function Header(){
 
@@ -12,14 +13,10 @@ function Header(){
             <header className={styles.header}>
                 <Button handleClick={handleClick} title='About' buttonClass="about"></Button>
                 <ThemeSwitcher></ThemeSwitcher>
-                <Title></Title>
+                <Title size={3} style={'header'}>My Homework project!</Title>
             </header>
         </>
     )
-}
-
-function Title(){
-    return <p>My Homework project!</p>
 }
 
 export default Header;
