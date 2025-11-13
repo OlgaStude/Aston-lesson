@@ -7,7 +7,6 @@ import { ModalProvider } from './shared/lib/modal/ModalProvider.tsx'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ModalProvider>
-
       <App />
     </ModalProvider>
   </StrictMode>,
