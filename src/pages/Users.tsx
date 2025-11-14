@@ -2,10 +2,24 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Title from "../shared/ui/Title/Title";
 import Body from "../shared/ui/Body/Body";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUsers } from "../entities/user/model/slice/userSlice";
 
 export default function Users(){
 
-    const users = useUsers()
+    const dispatch = useDispatch();
+
+    const { users, status } = useSelector(state => state.users)
+
+    console.log(users)
+
+    useEffect(
+      () => {
+        dispatch(fetchUsers())
+      }, []
+    )
+
+    if(status == 'loading') return <p>Loading...</p>
 
     return (
         <>
@@ -19,18 +33,4 @@ export default function Users(){
         </>
     )
 
-}
-
-function useUsers(){
-    const [ users, setUsers ] = useState([])
-
-    useEffect(
-        () => {
-            fetch('https://jsonplaceholder.typicode.com/users')
-                .then(res => res.json())
-                .then(setUsers)
-        }, []
-    )
-
-    return users;
 }

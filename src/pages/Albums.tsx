@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Title from "../shared/ui/Title/Title";
+import { useGetAlbumsQuery } from "../entities/album/api/albumsApi";
+import Body from "../shared/ui/Body/Body";
 
 export default function Albums(){
 
     const { id } = useParams()
 
-    const albums = useAlbums(id)
+    const { data: albums, isLoading, isError, error } = useGetAlbumsQuery({userId: id})
+
+    if (isLoading) return <Body style={'loading'}>Loading...</Body>;
+    
+    if (isError) return <Body style={'error'}>Something is wrong! {error.message}</Body>;
 
     return (
         <>
@@ -14,19 +20,4 @@ export default function Albums(){
         </>
     )
 
-}
-
-function useAlbums(id){
-
-    const [ albums, setAlbums ] = useState([])
-
-    useEffect(
-        () => {
-            fetch('https://jsonplaceholder.typicode.com/users/'+id+'/albums')
-            .then(res => res.json())
-            .then(setAlbums)
-        }, []
-    )
-
-    return albums;
 }
