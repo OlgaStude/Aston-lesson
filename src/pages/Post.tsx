@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Title from "../shared/ui/Title/Title";
 import Body from "../shared/ui/Body/Body";
-import { useDispatch, useSelector } from "react-redux";
 import { fetchPost } from "../entities/post/model/slice/postSlice";
+import { useAppDispatch, useAppSelector } from "../app/providers/store/store";
+import type { postSelectorType } from "../entities/post/model/types";
 
 export default function Post(){
 
@@ -22,10 +23,10 @@ export default function Post(){
 
 }
 
-function usePost(id){
-    const dispatch = useDispatch();
+function usePost(id: string | undefined): postSelectorType{
+    const dispatch = useAppDispatch();
 
-    const { status, post } = useSelector(state => state.post)
+    const { status, post } = useAppSelector(state => state.post)
 
     useEffect(
       () => {

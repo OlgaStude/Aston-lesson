@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, type PropsWithChildren } from "react"
 import { ModalContext } from "./useModal"
 
-export function ModalProvider({ children }){
+export function ModalProvider({ children }: PropsWithChildren){
 
-    const [ isModal, switchModal ] = useState(false);
+    const [ isModal, switchModal ] = useState<boolean>(false);
 
-    const handleClick = () => {
+    const handleClick = (e: MouseEvent): void => {
+        console.log(e.target)
         switchModal(!isModal)
     }
 

@@ -1,9 +1,15 @@
+import type { ReactNode } from "react";
 import { UseTheme } from "../../../shared/lib/theme/useTheme";
 import styles from "./styles.module.css"
 
-export default function ThemeSwitcher(){
+type themeType = {
+    isDark: boolean,
+    switchTheme: boolean
+}
 
-    const { isDark, switchTheme } = UseTheme();
+export default function ThemeSwitcher(): ReactNode{
+
+    const { isDark, switchTheme } = UseTheme<themeType>();
 
     return (
         <>

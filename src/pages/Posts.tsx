@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Link, useParams } from "react-router-dom";
 import Title from "../shared/ui/Title/Title";
+import { List } from "../shared/ui/ItemList/ItemList";
+import type { postType } from "../entities/post/model/types";
 
-export default function Posts(){
+export default function Posts(): ReactNode{
 
     const { id } = useParams()
 
@@ -10,14 +12,17 @@ export default function Posts(){
 
     return (
         <>
-            {posts.map(post => <Link key={post.id} to={'/posts/'+post.id}><Title size={1} style={'posts-title'}>{post.title}</Title></Link>)}
+            <List 
+                items={posts}
+                renderItems={post => <Link key={post.id} to={'/posts/'+post.id}><Title size={1} style={'posts-title'}>{post.title}</Title></Link>}
+            ></List>
         </>
     )
 
 }
 
-function usePosts(id){
-    const [ posts, setPosts ] = useState([])
+function usePosts(id: string | unknown): postType[]{
+    const [ posts, setPosts ] = useState<postType[]>([])
 
     useEffect(
         () => {

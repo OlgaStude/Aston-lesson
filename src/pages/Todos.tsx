@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useParams } from "react-router-dom";
 import Title from "../shared/ui/Title/Title";
 import { useAddTodoMutation, useGetTodosQuery } from "../entities/todo/api/todosApi";
 import Body from "../shared/ui/Body/Body";
 import Button from "../shared/ui/Button/Button";
+import { List } from "../shared/ui/ItemList/ItemList";
 
-export default function Todos(){
+export default function Todos(): ReactNode{
 
     const { id } = useParams()
 
@@ -26,22 +27,11 @@ export default function Todos(){
     return (
         <>
             <Button handleClick={handleClick} title={'add Todo'} buttonClass={'add-todo'}></Button>
-            {todos.map(todo => <Title key={todo.id} size={1} style={'todo-title'}>{todo.title}</Title>)}
+            <List 
+                items={todos}
+                renderItems={todo => <Title key={todo.id} size={1} style={'todo-title'}>{todo.title}</Title>}
+            ></List>
         </>
     )
 
-}
-
-function useTodos(id){
-    const [ todos, setTodos ] = useState([])
-
-    useEffect(
-        () => {
-            fetch('https://jsonplaceholder.typicode.com/users/'+id+'/todos')
-                .then(res => res.json())
-                .then(setTodos)
-        }, []
-    )
-
-    return todos
 }

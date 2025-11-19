@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useParams } from "react-router-dom";
 import Title from "../shared/ui/Title/Title";
+import type { photoType } from "../entities/photo/model/types";
+import { List } from "../shared/ui/ItemList/ItemList";
 
-export default function Photos(){
+export default function Photos(): ReactNode{
 
     const { id } = useParams()
 
@@ -10,14 +12,17 @@ export default function Photos(){
 
     return (
         <>
-            {photos.map(photo => <Title key={photo.id} size={1} style={'photo-title'}>{photo.title}</Title>)}
+            <List
+                items={photos}
+                renderItems={photo => <Title key={photo.id} size={1} style={'photo-title'}>{photo.title}</Title>}
+            ></List>
         </>
     )
 
 }
 
-function usePhotos(id){
-    const [ photos, setPhotos ] = useState([])
+function usePhotos(id: string | undefined): photoType[]{
+    const [ photos, setPhotos ] = useState<photoType[]>([])
 
     useEffect(
         () => {

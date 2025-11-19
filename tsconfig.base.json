@@ -6,6 +6,16 @@
     "module": "ESNext",
     "types": ["node"],
     "skipLibCheck": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@shared/*": ["shared/*"],
+      "@app": ["app"],
+      "@assets": ["assets/*"],
+      "@entities": ["entities/*"],
+      "@features": ["features/*"],
+      "@pages": ["pages/*"],
+      "@widgets": ["widgets/*"],
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",

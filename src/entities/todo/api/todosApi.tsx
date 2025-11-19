@@ -1,19 +1,20 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 import { createApi } from "@reduxjs/toolkit/query/react";
+import type { todosApiArgsType, todosType } from "../model/types";
 
 export const todosApi = createApi(
     {
         reducerPath: 'todosApi',
         baseQuery: fetchBaseQuery({baseUrl: 'https://jsonplaceholder.typicode.com'}),
         endpoints: (builder) => ({
-            getTodos: builder.query({
+            getTodos: builder.query<string, todosApiArgsType>({
                 query: (args) => {
                     const { userId } = args
                     return '/users/'+userId+'/todos'
                 },
                 providesTags: ['Todos']
             }),
-            addTodo: builder.mutation({
+            addTodo: builder.mutation<todosType, Partial<todosType>>({
                 query: (newTodo) => ({
                     url: '/todos',
                     method: 'POST',

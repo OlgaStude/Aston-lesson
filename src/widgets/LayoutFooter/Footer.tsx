@@ -1,6 +1,7 @@
+import type { ReactNode } from 'react';
 import styles from './Footer.module.css'
 
-function Footer(){
+function Footer(): ReactNode{
     return (
         <>
             <footer className={styles.footer}>

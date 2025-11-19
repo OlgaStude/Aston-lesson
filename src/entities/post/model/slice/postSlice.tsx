@@ -1,12 +1,15 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import type { postInitialState, postType } from "../types";
+
+const initialState: postInitialState = {
+    postId: '',
+    post: [],
+    status: ''
+}
 
 const postSlice = createSlice({
     name: 'post',
-    initialState: { 
-        postId: null,
-        post: {},
-        status: ''
-    },
+    initialState:  initialState,
     reducers: {
        
     },
@@ -15,7 +18,7 @@ const postSlice = createSlice({
         .addCase(fetchPost.pending, (state) => {
             state.status = 'loading'
         })
-        .addCase(fetchPost.fulfilled, (state, action) => {
+        .addCase(fetchPost.fulfilled, (state, action: PayloadAction<postType>) => {
             state.status = ''
             state.post = action.payload
         })
@@ -24,7 +27,7 @@ const postSlice = createSlice({
 
 export default postSlice.reducer;
 
-export const fetchPost = createAsyncThunk('post/fetchPost', async (postId) => {
+export const fetchPost = createAsyncThunk<postType>('post/fetchPost', async (postId: number) => {
     const res = await fetch('https://jsonplaceholder.typicode.com/posts/'+postId)
     return res.json()
 })

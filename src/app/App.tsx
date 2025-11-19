@@ -1,7 +1,7 @@
 import './App.css'
-import { ThemeProvider } from '../shared/lib/theme/ThemeProvider'
-import Modal from '../shared/ui/Modal/Portal'
-import { useModal } from '../shared/lib/modal/useModal'
+import { ThemeProvider } from '@shared/lib/theme/ThemeProvider'
+import Modal from '@shared/ui/Modal/Portal'
+import { useModal } from '@shared/lib/modal/useModal'
 import { RouterProvider } from 'react-router-dom'
 import { MyRouter } from './providers/router/Router'
 
