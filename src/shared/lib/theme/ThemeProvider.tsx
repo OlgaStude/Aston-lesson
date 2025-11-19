@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type PropsWithChildren } from "react";
 import { ThemeContext } from "./useTheme";
 
-export function ThemeProvider({ children }){
+export function ThemeProvider({ children }: PropsWithChildren){
 
-    const [ isDark, switchIsDark ] = useState(false);
+    const [ isDark, switchIsDark ] = useState<boolean>(false);
 
-    function switchTheme(){
+    function switchTheme(): void{
         switchIsDark(!isDark)
     }
 

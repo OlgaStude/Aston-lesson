@@ -1,7 +1,13 @@
+import type { JSX } from 'react';
 import { useFilter } from '../../../features/PostLengthFilter/lib/filterByLength';
-import styles from './styles.module.css'
 
-export default function Input({ name, type, style}){
+type inputType = {
+    name: string,
+    type: 'text' | 'number',
+    style: string,
+}
+
+export default function Input({ name, type, style}: inputType): JSX.Element | undefined{
 
     if (type == 'text')
         return <input type="text" />

@@ -6,7 +6,7 @@ export const postsApi = createApi(
         reducerPath: 'postsApi',
         baseQuery: fetchBaseQuery({baseUrl: 'https://jsonplaceholder.typicode.com'}),
         endpoints: (builder) => ({
-            getPosts: builder.query({
+            getPosts: builder.query<string, string>({
                 query: () => {
                     return '/posts'
                 },

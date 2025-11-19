@@ -1,6 +1,12 @@
+import type { JSX, PropsWithChildren } from 'react'
 import styles from './styles.module.css'
 
-export default function Title({children, size, style}){
+type titleType = {
+    size: 1 | 2 | 3,
+    style: string
+}
+
+export default function Title({children, size, style}: PropsWithChildren<titleType>): JSX.Element{
 
     if (size == 1)
         return <h1 className={styles[style]}>{children}</h1>

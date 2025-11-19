@@ -1,9 +1,22 @@
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useState, type JSX, type ReactNode } from "react"
 import Button from "../../../shared/ui/Button/Button"
 import Comment from "../../../entities/comments/ui/Comment"
-import { useGetCommentsQuery, useLazyGetCommentsQuery } from "../../../entities/comments/api/commentsApi"
+import { useLazyGetCommentsQuery } from "../../../entities/comments/api/commentsApi"
+import type { commentsApiArgsType, commentType } from "../../../entities/comments/model/types"
+import type { TypedLazyQueryTrigger } from "@reduxjs/toolkit/query/react"
+import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from "@reduxjs/toolkit/query"
 
-export default function CommentList({id}){
+type commentListType = {
+    id: number
+}
+
+type getCommentsType = {
+    comments: commentType[],
+    buttonTitle: 'open' | 'close',
+    handleClick: () => void
+}
+
+export default function CommentList({id}: commentListType): JSX.Element{
     
     const [ getComments, { isError } ] = useLazyGetCommentsQuery()
 
@@ -21,14 +34,14 @@ export default function CommentList({id}){
     )
 }
 
-function useComments(id, getComments){
-    const [comments, setCommnents] = useState([])
+function useComments(id: number, getComments: TypedLazyQueryTrigger<commentType[], commentsApiArgsType, BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError>>): getCommentsType{
+    const [comments, setCommnents] = useState<commentType[]>([])
 
-    const [isOpen, toggle] = useState(false)
+    const [isOpen, toggle] = useState<boolean>(false)
 
-    const [buttonTitle, switchTitle] = useState('open')
+    const [buttonTitle, switchTitle] = useState<'open' | 'close'>('open')
 
-    const handleClick = async () => {
+    const handleClick = async (): Promise<void> => {
 
         if(!isOpen){
             const {data: comments, isLoading} = await getComments({postId: id})

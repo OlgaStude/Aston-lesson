@@ -1,25 +1,25 @@
-import { createContext, useContext, useRef, useState } from "react";
+import { createContext, useContext, useRef, useState, type ContextType, type PropsWithChildren } from "react";
 
 const FilterContext = createContext()
 
-export const useFilter = () => {
+export const useFilter = (): ContextType<typeof FilterContext> => {
     return useContext(FilterContext);
 }
 
-export const FilterProvider = ({children}) => {
+export const FilterProvider = ({children}: PropsWithChildren) => {
 
-    const maxLenghtInput = useRef(0);
+    const maxLenghtInput = useRef<HTMLInputElement>(null);
 
-    const [maxLenght, setMax] = useState(0);
+    const [maxLenght, setMax] = useState<number | string>(0);
 
-    const [isOn, switchFilter] = useState(false)
+    const [isOn, switchFilter] = useState<boolean>(false)
 
-    function filterPosts(){
+    function filterPosts(): void{
         setMax(maxLenghtInput.current.value)
         switchFilter(true)
     }
 
-    function clearFilter(){
+    function clearFilter(): void{
         switchFilter(false)
         maxLenghtInput.current.value = ''
     }

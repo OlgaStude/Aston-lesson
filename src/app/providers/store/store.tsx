@@ -1,10 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { postsApi } from "../../../entities/post/api/postsApi";
-import { commentsApi } from "../../../entities/comments/api/commentsApi";
-import { albumsApi } from "../../../entities/album/api/albumsApi";
-import { todosApi } from "../../../entities/todo/api/todosApi";
-import postReducer from '../../../entities/post/model/slice/postSlice'
-import usersReducer from '../../../entities/user/model/slice/userSlice'
+import { postsApi } from "@entities/post/api/postsApi";
+import { commentsApi } from "@entities/comments/api/commentsApi";
+import { albumsApi } from "@entities/album/api/albumsApi";
+import { todosApi } from "@entities/todo/api/todosApi";
+import postReducer from '@entities/post/model/slice/postSlice'
+import usersReducer from '@entities/user/model/slice/userSlice'
+import { useDispatch, useSelector } from "react-redux";
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
+export const useAppSelector = useSelector.withTypes<RootState>()
 
 export const store = configureStore({
     reducer: {
