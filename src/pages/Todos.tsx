@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { type JSX } from "react";
 import { useParams } from "react-router-dom";
 import Title from "../shared/ui/Title/Title";
 import { useAddTodoMutation, useGetTodosQuery } from "../entities/todo/api/todosApi";
@@ -6,7 +6,7 @@ import Body from "../shared/ui/Body/Body";
 import Button from "../shared/ui/Button/Button";
 import { List } from "../shared/ui/ItemList/ItemList";
 
-export default function Todos(): ReactNode{
+export default function Todos(): JSX.Element{
 
     const { id } = useParams()
 

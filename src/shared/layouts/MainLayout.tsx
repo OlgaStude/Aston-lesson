@@ -5,10 +5,10 @@ import Footer from "../../widgets/LayoutFooter/Footer";
 import { Outlet } from "react-router-dom";
 import Tabs from "../../widgets/UserTabs/UserTabs";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import type { ReactNode } from "react";
+import type { JSX, ReactNode } from "react";
 
 
-function MainLayout(): ReactNode{
+function MainLayout(): JSX.Element{
 
     return (
         <>

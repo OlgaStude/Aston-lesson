@@ -1,11 +1,11 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { type JSX } from "react";
 import { Link, useParams } from "react-router-dom";
 import Title from "../shared/ui/Title/Title";
 import { useGetAlbumsQuery } from "../entities/album/api/albumsApi";
 import Body from "../shared/ui/Body/Body";
 import { List } from "../shared/ui/ItemList/ItemList";
 
-export default function Albums(): ReactNode{
+export default function Albums(): JSX.Element{
 
     const { id } = useParams()
 

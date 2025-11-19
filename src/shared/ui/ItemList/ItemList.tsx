@@ -1,11 +1,11 @@
-import type { ReactNode } from "react"
+import type { JSX, ReactNode } from "react"
 
 type ListProps<T> = {
     items: T[],
     renderItems: (item: T) => ReactNode,
 }
 
-export function List<T>(prop: ListProps<T>): ReactNode{
+export function List<T>(prop: ListProps<T>): JSX.Element{
     const { items, renderItems } = prop
 
     return (

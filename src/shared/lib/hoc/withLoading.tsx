@@ -1,7 +1,7 @@
-import type { ComponentType } from "react"
+import type { ComponentType, JSX } from "react"
 
-export function PostListWrapper<T>(PostListComponent: ComponentType<T>){
-    return function(props: T){
+export function PostListWrapper<T>(PostListComponent: ComponentType<T>): (props: T) => JSX.Element{
+    return function(props: T): JSX.Element{
         return<PostListComponent {...props}></PostListComponent>
     }
 }

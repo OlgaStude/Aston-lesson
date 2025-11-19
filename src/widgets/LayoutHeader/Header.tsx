@@ -3,12 +3,12 @@ import ThemeSwitcher from '../../features/ThemeSwitcher/ui/ThemeSwitcher';
 import Button from '../../shared/ui/Button/Button';
 import { useModal } from '../../shared/lib/modal/useModal';
 import Title from '../../shared/ui/Title/Title';
-import type { ReactNode } from 'react';
+import type { JSX, ReactNode } from 'react';
 import type { modalType } from '../../shared/ui/Modal/types';
 
 
 
-function Header(): ReactNode{
+function Header(): JSX.Element{
 
     const {handleClick} = useModal<modalType>()
 

@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { JSX } from 'react'
 import styles from './styles.module.css'
 
 type buttonType = {
@@ -7,7 +7,7 @@ type buttonType = {
     buttonClass: string
 }
 
-export default function Button({ handleClick, title, buttonClass }: buttonType): ReactNode{
+export default function Button({ handleClick, title, buttonClass }: buttonType): JSX.Element{
 
     return <button onClick={handleClick} className={styles[buttonClass]}>{title}</button>
 }

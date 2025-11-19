@@ -1,10 +1,10 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type JSX, type ReactNode } from "react";
 import { useParams } from "react-router-dom";
 import Title from "../shared/ui/Title/Title";
 import type { photoType } from "../entities/photo/model/types";
 import { List } from "../shared/ui/ItemList/ItemList";
 
-export default function Photos(): ReactNode{
+export default function Photos(): JSX.Element{
 
     const { id } = useParams()
 
@@ -28,7 +28,9 @@ function usePhotos(id: string | undefined): photoType[]{
         () => {
             fetch('https://jsonplaceholder.typicode.com/albums/'+id+'/photos')
                 .then(res => res.json())
-                .then(setPhotos)
+                .then((data: unknown) => {
+                        setPhotos(data as photoType[])
+                    })
         }, []
     )
 

@@ -1,5 +1,5 @@
-import { useEffect, useState, type ReactNode } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect, type JSX } from "react";
+import { Link } from "react-router-dom";
 import Title from "../shared/ui/Title/Title";
 import Body from "../shared/ui/Body/Body";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +7,7 @@ import { fetchUsers } from "../entities/user/model/slice/userSlice";
 import { List } from "@shared/ui/ItemList/ItemList";
 import { useAppDispatch, useAppSelector } from "../app/providers/store/store";
 
-export default function Users(): ReactNode{
+export default function Users(): JSX.Element{
 
     const dispatch = useAppDispatch();
 

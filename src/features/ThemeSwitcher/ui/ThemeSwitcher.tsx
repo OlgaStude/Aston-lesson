@@ -1,13 +1,13 @@
-import type { ReactNode } from "react";
+import type { Dispatch, JSX, ReactNode, SetStateAction } from "react";
 import { UseTheme } from "../../../shared/lib/theme/useTheme";
 import styles from "./styles.module.css"
 
 type themeType = {
     isDark: boolean,
-    switchTheme: boolean
+    switchTheme: Dispatch<SetStateAction<boolean>>
 }
 
-export default function ThemeSwitcher(): ReactNode{
+export default function ThemeSwitcher(): JSX.Element{
 
     const { isDark, switchTheme } = UseTheme<themeType>();
 

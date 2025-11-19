@@ -1,10 +1,9 @@
 import PostCard from "../../entities/post/ui/PostCard";
 import styles from "./PostList.module.css";
-import { useState, useEffect, useRef, useMemo, useCallback, type ReactNode } from "react";
+import { type JSX } from "react";
 import { useFilter } from "../../features/PostLengthFilter/lib/filterByLength";
 import PostLengthFilter from "../../features/PostLengthFilter/ui/PostLengthFilter";
 import { PostListWrapper } from "../../shared/lib/hoc/withLoading";
-import { useQuery } from "@tanstack/react-query";
 import Title from "../../shared/ui/Title/Title";
 import { useGetPostsQuery } from "../../entities/post/api/postsApi";
 import Body from "../../shared/ui/Body/Body";
@@ -15,7 +14,7 @@ type filterType = {
     isOn: boolean
 }
 
-function PostListUnwrapped(): ReactNode{
+function PostListUnwrapped(): JSX.Element{
 
     const { data: posts, isLoading, isError, error } = useGetPostsQuery()
 

@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react'
+import type { JSX, PropsWithChildren } from 'react'
 import styles from './styles.module.css'
 
 type titleType = {
@@ -6,7 +6,7 @@ type titleType = {
     style: string
 }
 
-export default function Title({children, size, style}: PropsWithChildren<titleType>){
+export default function Title({children, size, style}: PropsWithChildren<titleType>): JSX.Element{
 
     if (size == 1)
         return <h1 className={styles[style]}>{children}</h1>

@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react"
+import { useState, type JSX, type ReactNode } from "react"
 import Button from "../../../shared/ui/Button/Button"
 import Comment from "../../../entities/comments/ui/Comment"
 import { useLazyGetCommentsQuery } from "../../../entities/comments/api/commentsApi"
@@ -16,7 +16,7 @@ type getCommentsType = {
     handleClick: () => void
 }
 
-export default function CommentList({id}: commentListType): ReactNode{
+export default function CommentList({id}: commentListType): JSX.Element{
     
     const [ getComments, { isError } ] = useLazyGetCommentsQuery()
 
